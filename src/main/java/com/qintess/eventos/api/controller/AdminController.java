@@ -8,7 +8,7 @@ import com.qintess.eventos.api.domain.Perfil;
 @Controller
 public class AdminController {
 
-	@RequestMapping("admin/")
+	@RequestMapping("admin1/")
 	public String IndexPaginaAdmin() {
 		return "admin/index";
 	}

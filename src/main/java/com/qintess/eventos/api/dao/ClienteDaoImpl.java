@@ -11,16 +11,19 @@ public class ClienteDaoImpl extends AbstractDao<Cliente, Long> implements Client
 	@Override
 	public List<Cliente> findByEmail(String email) {
 		
-		return createQuery("select c from Cliente u where u.email = ?1 ) ", email);
+		return createQuery("select c from Cliente c where c.email = ?1 ) ", email);
 	}
 
 	@Override
 	public List<Cliente> findByCpf(String cpf) {
 		
-		return createQuery("select u from Usuario u where u.cfp = ?1 ) ", cpf);
+		return createQuery("select c from Cliete c where c.cpf = ?1 ) ", cpf);
 	}
 
-
+	@Override
+	public List<Cliente> findByEmailAndSenha(String email, String senha){
+		return createQuery("select c Cliente u where c.email = ?1 and c.senhaCliente = ?2)", email, senha);
+	}
 	
 
 }

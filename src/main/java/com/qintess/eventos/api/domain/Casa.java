@@ -16,7 +16,7 @@ public class Casa extends AbstractEntity<Long> {
 	
 	@Lob
 	@Column(columnDefinition="mediumblob")
-	private byte[] imagemCasa;
+	private byte[]  imagemCasa;
 	
 	@Transient //esse campo não será persistido no hibernate
 	private String imagemEncoded;
@@ -103,6 +103,8 @@ public class Casa extends AbstractEntity<Long> {
 	}
 
 
+
+
 	public byte[] getImagemCasa() {
 		return imagemCasa;
 	}
@@ -134,11 +136,14 @@ public class Casa extends AbstractEntity<Long> {
 	
 	}
 
-	public Casa(String nome, byte[] imagemCasa,  String logradouro, int numero, String complemento,
-			String bairro, String cep, String cidade, String uF) {
+
+
+	public Casa(String nome, byte[] imagemCasa, String imagemEncoded, String logradouro, int numero,
+			String complemento, String bairro, String cep, String cidade, String uF) {
 		super();
 		this.nome = nome;
 		this.imagemCasa = imagemCasa;
+		this.imagemEncoded = imagemEncoded;
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.complemento = complemento;

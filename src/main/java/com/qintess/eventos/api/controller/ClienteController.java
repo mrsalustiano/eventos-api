@@ -19,7 +19,7 @@ import com.qintess.eventos.api.domain.Cliente;
 import com.qintess.eventos.api.service.ClienteService;
 
 @Controller
-@RequestMapping("/clientes")
+@RequestMapping("/clientes1")
 public class ClienteController {
 
 	@Autowired

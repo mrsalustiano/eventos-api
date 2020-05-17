@@ -19,7 +19,7 @@ import com.qintess.eventos.api.domain.Perfil;
 import com.qintess.eventos.api.service.PerfilService;
 
 @Controller
-@RequestMapping("/admin/perfis")
+@RequestMapping("/admin/perfis1")
 public class PerfilController {
 
 	@Autowired

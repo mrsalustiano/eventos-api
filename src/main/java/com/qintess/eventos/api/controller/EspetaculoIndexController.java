@@ -15,7 +15,7 @@ import com.qintess.eventos.api.service.CasaService;
 import com.qintess.eventos.api.service.EspetaculoService;
 
 @Controller
-@RequestMapping("/espetaculos")
+@RequestMapping("/espetaculos1")
 public class EspetaculoIndexController {
 
 	@Autowired

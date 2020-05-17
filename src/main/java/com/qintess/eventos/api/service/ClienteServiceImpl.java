@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.qintess.eventos.api.dao.ClienteDao;
 import com.qintess.eventos.api.domain.Cliente;
+import com.qintess.eventos.api.util.HashUtil;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -18,6 +19,8 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	@Transactional
 	public void save(Cliente cliente) {
+		String hash = HashUtil.getSecureHash(cliente.getSenhaCliente());
+		cliente.setSenhaCliente(hash);
 		dao.save(cliente);
 		
 	}
@@ -25,6 +28,8 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	@Transactional
 	public void update(Cliente cliente) {
+		String hash = HashUtil.getSecureHash(cliente.getSenhaCliente());
+		cliente.setSenhaCliente(hash);
 		dao.update(cliente);
 		
 	}
@@ -61,6 +66,12 @@ public class ClienteServiceImpl implements ClienteService {
 		return dao.findByCpf(cpf);
 	}
 
-
+	public List<Cliente> login(String email, String password) {
+		String hash = HashUtil.getSecureHash(password);
+				
+		List<Cliente> result = dao.findByEmailAndSenha(email, hash);
+		return result;
+	}
+	
 
 }

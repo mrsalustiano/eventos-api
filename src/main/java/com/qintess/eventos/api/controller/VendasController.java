@@ -26,7 +26,7 @@ import com.qintess.eventos.api.service.EspetaculoService;
 import com.qintess.eventos.api.service.VendaService;
 
 @Controller
-@RequestMapping("/vendas")
+@RequestMapping("/vendas1")
 public class VendasController {
 
 	@Autowired

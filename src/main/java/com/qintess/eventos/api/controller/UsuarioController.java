@@ -25,7 +25,7 @@ import com.qintess.eventos.api.service.UsuarioService;
 
 
 @Controller
-@RequestMapping("/admin/usuarios")
+@RequestMapping("/admin/usuarios1")
 public class UsuarioController {
 	
 	@Autowired

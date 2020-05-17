@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
@@ -38,8 +39,6 @@ public class Espetaculo extends AbstractEntity<Long> {
 	private int destaque;
 	
 
-	
-
 	@Lob
 	@Column(columnDefinition="mediumblob")
 	private byte[] imagemCasa;
@@ -47,7 +46,8 @@ public class Espetaculo extends AbstractEntity<Long> {
 	@Transient //esse campo não será persistido no hibernate
 	private String imagemEncoded;
 	
-	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "casa_id")
 	public Casa casa;
 
@@ -57,6 +57,7 @@ public class Espetaculo extends AbstractEntity<Long> {
 
 	@Column(nullable = false, length = 80)
 	private String nome;
+
 
 	@OneToMany(mappedBy = "espetaculo", cascade = CascadeType.PERSIST)
 	Set<Venda> vendas;
@@ -156,5 +157,21 @@ public class Espetaculo extends AbstractEntity<Long> {
 		this.imagemEncoded = imagemEncoded;
 	}
 
+	public Espetaculo(String faixaEtaria, LocalDate dataEspetaculo, BigDecimal valor, int capacidade, int destaque,
+			byte[] imagemCasa,  Casa casa, String descricao, String nome, Set<Venda> vendas) {
+		super();
+		this.faixaEtaria = faixaEtaria;
+		this.dataEspetaculo = dataEspetaculo;
+		this.valor = valor;
+		this.capacidade = capacidade;
+		this.destaque = destaque;
+		this.imagemCasa = imagemCasa;
+		this.casa = casa;
+		this.descricao = descricao;
+		this.nome = nome;
+		this.vendas = vendas;
+	}
+
+	
 
 }

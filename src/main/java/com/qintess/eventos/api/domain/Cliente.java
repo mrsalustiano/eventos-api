@@ -4,10 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "cliente")
+@AllArgsConstructor
 public class Cliente extends AbstractEntity<Long> {
 
 

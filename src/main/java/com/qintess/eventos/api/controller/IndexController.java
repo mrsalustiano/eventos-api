@@ -12,7 +12,7 @@ import com.qintess.eventos.api.domain.Venda;
 import com.qintess.eventos.api.service.VendaService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api1")
 public class IndexController {
 
 	@Autowired
