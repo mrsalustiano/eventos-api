@@ -1,0 +1,360 @@
+{
+	"info": {
+		"_postman_id": "7a91debd-6cd0-4b94-abea-0abc25035851",
+		"name": "Desafio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CasaShow",
+			"item": [
+				{
+					"name": "SalvarCasaShow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Casa1\",\n    \"logradouro\": \"Rua Rui Barbosa\",\n    \"numero\": \"190\",\n    \"complemento\": \"Ap 92\",\n    \"bairro\": \"Forte\",\n    \"cep\": \"11700170\",\n    \"cidade\": \"Praia Grande\",\n    \"uf\": \"SP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/casas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"casas"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCasaShow",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api}}/casas",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"casas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCasaShow",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Casa222\",\n    \"logradouro\": \"Rua Rui Barbosa\",\n    \"numero\": 190,\n    \"complemento\": \"Ap 92\",\n    \"bairro\": \"Forte\",\n    \"cep\": \"11700170\",\n    \"cidade\": \"Praia Grande\",\n    \"uf\": \"SP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/casas/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"casas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCasaShow",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/casas/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"casas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "espetaculo",
+			"item": [
+				{
+					"name": "ListEspetaculo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/espetaculos",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"espetaculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SalvarEspetaculo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"faixaEtaria\": \"12 anos\",\n    \"dataEspetaculo\": \"2020-02-12\",\n    \"valor\": \"129.00\",\n    \"capacidade\": \"1200\",\n    \"destaque\": \"0\",\n    \"imagemCasa\": \"\",\n    \"imagemEncoded\": \"\",\n    \"casa\":      {\n        \"id\": 1,\n        \"nome\": \"Casa1\",\n        \"imagemCasa\": null,\n        \"imagemEncoded\": null,\n        \"logradouro\": \"Rua Rui Barbosa\",\n        \"numero\": 190,\n        \"complemento\": \"Ap 92\",\n        \"bairro\": \"Forte\",\n        \"cep\": \"11700170\",\n        \"cidade\": \"Praia Grande\",\n        \"uf\": \"SP\"\n    },\n    \"descricao\": \"Show 1 \",\n    \"nome\": \"teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/espetaculos",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"espetaculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEspetaculo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \r\n        \"faixaEtaria\": \"12 anos\",\r\n        \"dataEspetaculo\": \"2020-02-12\",\r\n        \"valor\": 399.00,\r\n        \"capacidade\": 1200,\r\n        \"destaque\": 0,\r\n        \"imagemCasa\": \"\",\r\n        \"imagemEncoded\": null,\r\n        \"casa\": {\r\n            \"id\": 1,\r\n            \"nome\": \"Casa1\",\r\n            \"imagemCasa\": null,\r\n            \"imagemEncoded\": null,\r\n            \"logradouro\": \"Rua Rui Barbosa\",\r\n            \"numero\": 190,\r\n            \"complemento\": \"Ap 92\",\r\n            \"bairro\": \"Forte\",\r\n            \"cep\": \"11700170\",\r\n            \"cidade\": \"Praia Grande\",\r\n            \"uf\": \"SP\"\r\n        },\r\n        \"descricao\": \"Show 1 \",\r\n        \"nome\": \"teste\",\r\n        \"vendas\": []\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/espetaculos/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"espetaculos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEspetaculo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api}}/espetaculos/2",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"espetaculos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "ListCliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/clientes",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SaveCliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"celular\": \"11 9999-9999\",\n    \"cpf\": \"111.111.111-11\",\n    \"email\": \"email@email.com\",\n    \"newsletter\": \"false\",\n    \"nome\": \"marcelo\",\n    \"senhaCliente\": \"asd123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/clientes",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n\r\n        \"celular\": \"11 9999-9999\",\r\n        \"cpf\": \"111.111.111-11\",\r\n        \"email\": \"email@email.com\",\r\n        \"newsletter\": false,\r\n        \"nome\": \"marcelo Silva\",\r\n        \"senhaCliente\": \"asd123456\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/clientes/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/clientes/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Venda",
+			"item": [
+				{
+					"name": "ListaVenda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/vendas",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"vendas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SalvaVenda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"cliente\": \t {\n        \"id\": 1,\n        \"celular\": \"11 9999-9999\",\n        \"cpf\": \"111.111.111-11\",\n        \"email\": \"email@email.com\",\n        \"newsletter\": false,\n        \"nome\": \"marcelo\",\n        \"senhaCliente\": \"54d5cb2d332dbdb4850293caae4559ce88b65163f1ea5d4e4b3ac49d772ded14\"\n    },\n \"espetaculo\":{\n        \"id\": 1,\n        \"faixaEtaria\": \"12 anos\",\n        \"dataEspetaculo\": \"2020-02-12\",\n        \"valor\": 129.00,\n        \"capacidade\": 1200,\n        \"destaque\": 0,\n        \"imagemCasa\": \"\",\n        \"imagemEncoded\": null,\n        \"casa\": {\n            \"id\": 1,\n            \"nome\": \"Casa1\",\n            \"imagemCasa\": null,\n            \"imagemEncoded\": null,\n            \"logradouro\": \"Rua Rui Barbosa\",\n            \"numero\": 190,\n            \"complemento\": \"Ap 92\",\n            \"bairro\": \"Forte\",\n            \"cep\": \"11700170\",\n            \"cidade\": \"Praia Grande\",\n            \"uf\": \"SP\"\n        },\n        \"descricao\": \"Show 1 \",\n        \"nome\": \"teste\",\n        \"vendas\": []\n    },\n\t\n    \"quantidade\": \"2\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/vendas",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"vendas"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

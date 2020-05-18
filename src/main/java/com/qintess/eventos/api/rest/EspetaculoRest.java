@@ -44,12 +44,19 @@ public class EspetaculoRest {
 	@PostMapping
 	public ResponseEntity<Espetaculo> save(@RequestBody Espetaculo espetaculo){
 		
-			Espetaculo save = new Espetaculo(
-					espetaculo.getFaixaEtaria(),espetaculo.getDataEspetaculo(),
-					espetaculo.getValor(),espetaculo.getCapacidade(),	espetaculo.getDestaque(),
-					espetaculo.getImagemCasa(),espetaculo.getCasa(), espetaculo.getDescricao(), 
-					espetaculo.getNome(),espetaculo.getVendas());					
+			Espetaculo save = new Espetaculo();
 			
+					save.setCapacidade(espetaculo.getCapacidade());
+					save.setCasa(espetaculo.getCasa());
+					save.setDataEspetaculo(espetaculo.getDataEspetaculo());
+					save.setDescricao(espetaculo.getDescricao());
+					save.setDestaque(espetaculo.getDestaque());
+					save.setFaixaEtaria(espetaculo.getFaixaEtaria());
+					save.setNome(espetaculo.getNome());
+					save.setValor(espetaculo.getValor());
+					save.setImagemCasa(espetaculo.getImagemCasa());
+				
+				
 			LocalDate DataEspetaculo  = espetaculo.getDataEspetaculo();
 			espetaculo.setDataEspetaculo(DataEspetaculo);
 			

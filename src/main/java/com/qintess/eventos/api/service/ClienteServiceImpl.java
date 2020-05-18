@@ -66,12 +66,9 @@ public class ClienteServiceImpl implements ClienteService {
 		return dao.findByCpf(cpf);
 	}
 
-	public List<Cliente> login(String email, String password) {
-		String hash = HashUtil.getSecureHash(password);
-				
-		List<Cliente> result = dao.findByEmailAndSenha(email, hash);
-		return result;
-	}
+
+
+	
 	
 
 }

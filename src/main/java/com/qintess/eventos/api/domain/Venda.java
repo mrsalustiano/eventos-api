@@ -9,8 +9,16 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @SuppressWarnings("serial")
 @Entity
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Venda extends AbstractEntity<Long>{
 
 	@JsonIgnore
@@ -18,6 +26,7 @@ public class Venda extends AbstractEntity<Long>{
 	@JoinColumn(name = "cliente_id")
 	Cliente Cliente;
 	
+
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "espetaculo_id")
@@ -28,47 +37,5 @@ public class Venda extends AbstractEntity<Long>{
 	
 	private BigDecimal valor;
 
-	public Venda() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Cliente getCliente() {
-		return Cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		Cliente = cliente;
-	}
-
-	public Espetaculo getEspetaculo() {
-		return espetaculo;
-	}
-
-	public void setEspetaculo(Espetaculo espetaculo) {
-		this.espetaculo = espetaculo;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public BigDecimal getValor() {
-		return valor;
-	}
-
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
-	
-	
-	
-	
-	
-	
 	
 }

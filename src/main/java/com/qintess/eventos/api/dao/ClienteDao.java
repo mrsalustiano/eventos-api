@@ -19,6 +19,5 @@ public interface ClienteDao {
     List<Cliente> findByEmail(String email);
     
     List<Cliente> findByCpf(String cpf);
-    
-    List<Cliente> findByEmailAndSenha(String email, String senha);
+
 }

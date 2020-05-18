@@ -18,10 +18,22 @@ import javax.persistence.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "espetaculo")
+@AllArgsConstructor
+@Getter 
+@Setter
+@NoArgsConstructor
 public class Espetaculo extends AbstractEntity<Long> {
+
+
+
 
 	@Column(nullable = false, length = 80)
 	private String faixaEtaria;
@@ -62,116 +74,5 @@ public class Espetaculo extends AbstractEntity<Long> {
 	@OneToMany(mappedBy = "espetaculo", cascade = CascadeType.PERSIST)
 	Set<Venda> vendas;
 
-	public Set<Venda> getVendas() {
-		return vendas;
-	}
-
-	public void setVendas(Set<Venda> vendas) {
-		this.vendas = vendas;
-	}
-
-	public Espetaculo() {
-
-	}
-
-	public String getFaixaEtaria() {
-		return faixaEtaria;
-	}
-
-	public void setFaixaEtaria(String faixaEtaria) {
-		this.faixaEtaria = faixaEtaria;
-	}
-
-	public LocalDate getDataEspetaculo() {
-		return dataEspetaculo;
-	}
-
-	public void setDataEspetaculo(LocalDate dataEspetaculo) {
-		this.dataEspetaculo = dataEspetaculo;
-	}
-
-	public BigDecimal getValor() {
-		return valor;
-	}
-
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
-
-	public int getCapacidade() {
-		return capacidade;
-	}
-
-	public void setCapacidade(int capacidade) {
-		this.capacidade = capacidade;
-	}
-
-	public int getDestaque() {
-		return destaque;
-	}
-
-	public void setDestaque(int destaque) {
-		this.destaque = destaque;
-	}
-
-	
-
-	public byte[] getImagemCasa() {
-		return imagemCasa;
-	}
-
-	public void setImagemCasa(byte[] imagemCasa) {
-		this.imagemCasa = imagemCasa;
-	}
-
-	public Casa getCasa() {
-		return casa;
-	}
-
-	public void setCasa(Casa casa) {
-		this.casa = casa;
-	}
-
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getImagemEncoded() {
-		return imagemEncoded;
-	}
-
-	public void setImagemEncoded(String imagemEncoded) {
-		this.imagemEncoded = imagemEncoded;
-	}
-
-	public Espetaculo(String faixaEtaria, LocalDate dataEspetaculo, BigDecimal valor, int capacidade, int destaque,
-			byte[] imagemCasa,  Casa casa, String descricao, String nome, Set<Venda> vendas) {
-		super();
-		this.faixaEtaria = faixaEtaria;
-		this.dataEspetaculo = dataEspetaculo;
-		this.valor = valor;
-		this.capacidade = capacidade;
-		this.destaque = destaque;
-		this.imagemCasa = imagemCasa;
-		this.casa = casa;
-		this.descricao = descricao;
-		this.nome = nome;
-		this.vendas = vendas;
-	}
-
-	
 
 }

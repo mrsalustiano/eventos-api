@@ -36,7 +36,7 @@ public class CasaShowRest {
 
 		List<Casa> casas = service.findAll();
 
-		return ResponseEntity.ok(casas);
+		return ResponseEntity.ok(casas); 
 
 	}
 

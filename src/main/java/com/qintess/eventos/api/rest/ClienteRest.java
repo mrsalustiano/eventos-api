@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qintess.eventos.api.domain.Casa;
 import com.qintess.eventos.api.domain.Cliente;
 import com.qintess.eventos.api.service.ClienteService;
 
@@ -32,7 +31,7 @@ public class ClienteRest {
 	@GetMapping
 	public ResponseEntity<List<Cliente>> listAll() {
 
-		List<Cliente> clientes = service.findAll();
+		List<Cliente> clientes = service.findAll(); 
 
 		return ResponseEntity.ok(clientes);
 
@@ -68,6 +67,15 @@ public class ClienteRest {
 	public ResponseEntity<Cliente> delete(@PathVariable(name = "id") Long id){
 		service.delete(id);
 		return ResponseEntity.status(HttpStatus.OK).build();
+		
+	}
+	
+	@GetMapping(value = "/login")
+	public ResponseEntity<List<Cliente>> login(@RequestBody Cliente cliente){
+		
+		
+		 
+		return null;
 		
 	}
 

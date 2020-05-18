@@ -21,7 +21,7 @@ public class StringToCasaConversor implements Converter<String , Casa>  {
 			return null;
 		}
 		Long id = Long.valueOf(text);
-		return service.findById(id);
+		return service.findById(id); 
 	}
 
 

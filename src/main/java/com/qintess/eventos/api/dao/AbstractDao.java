@@ -18,7 +18,7 @@ public abstract class AbstractDao<T, PK extends Serializable> {
 	private EntityManager entityManager;
 
 	protected EntityManager getEntityManager() {
-		return entityManager;
+		return entityManager; 
 	}
 	
 	public void save(T entity) { 

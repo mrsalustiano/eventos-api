@@ -19,5 +19,7 @@ public interface ClienteService {
     List<Cliente> findByEmail(String email);
     
     List<Cliente> findByCpf(String cpf);
+    
+
 
 }

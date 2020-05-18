@@ -4,13 +4,22 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "cliente")
 @AllArgsConstructor
+@Getter 
+@Setter
+@NoArgsConstructor
 public class Cliente extends AbstractEntity<Long> {
 
 
@@ -31,71 +40,11 @@ public class Cliente extends AbstractEntity<Long> {
 	  @Column(name = "nome", nullable = false , length = 80)
 	  private String nome;
 	  
-	  
+	  @Getter(onMethod = @__({@JsonIgnore}))
+	  @Setter(onMethod = @__({@JsonProperty}))
 	  @Column(name = "senhaCliente", nullable = false , length = 200)
 	  private String senhaCliente;
 	
-
-	public Cliente() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-
-	public String getCelular() {
-		return celular;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public Boolean getNewsletter() {
-		return newsletter;
-	}
-
-	public void setNewsletter(Boolean newsletter) {
-		this.newsletter = newsletter;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-
-	public String getSenhaCliente() {
-		return senhaCliente;
-	}
-
-	public void setSenhaCliente(String senhaCliente) {
-		this.senhaCliente = senhaCliente;
-	}
 
 
 	

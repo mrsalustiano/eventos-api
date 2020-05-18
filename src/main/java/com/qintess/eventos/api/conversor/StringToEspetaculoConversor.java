@@ -21,7 +21,7 @@ public class StringToEspetaculoConversor implements Converter<String , Espetacul
 			return null;
 		}
 		Long id = Long.valueOf(text);
-		return service.findById(id);
+		return service.findById(id); 
 	}
 
 

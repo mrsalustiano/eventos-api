@@ -25,6 +25,8 @@ public class VendaDaoImpl extends AbstractDao<Venda, Long> implements VendaDao {
 
 	@Override
 	public List<Venda> findByClienteEspetaculo(Cliente cliente, Espetaculo espetaculo) {
+		System.out.println(cliente);
+		System.out.println(espetaculo);
 		
 		return createQuery("select v from Venda v where (v.Cliente = ?1) and ( v.espetaculo = ?2 ) ", cliente, espetaculo);
 	}
