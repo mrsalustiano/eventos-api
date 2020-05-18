@@ -2,15 +2,11 @@ package com.qintess.eventos.api.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -60,7 +56,7 @@ public class Espetaculo extends AbstractEntity<Long> {
 	
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "casa_id")
+	@JoinColumn(name = "casa_id", nullable = false)
 	public Casa casa;
 
 	
@@ -71,8 +67,8 @@ public class Espetaculo extends AbstractEntity<Long> {
 	private String nome;
 
 
-	@OneToMany(mappedBy = "espetaculo", cascade = CascadeType.PERSIST)
-	Set<Venda> vendas;
+//	@OneToMany(mappedBy = "espetaculo", cascade = CascadeType.PERSIST)
+//	Set<Venda> vendas;
 
 
 }
