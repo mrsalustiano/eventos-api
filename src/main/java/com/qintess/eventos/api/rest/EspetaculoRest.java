@@ -1,5 +1,6 @@
 package com.qintess.eventos.api.rest;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,8 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.qintess.eventos.api.domain.Casa;
 import com.qintess.eventos.api.domain.Espetaculo;
 import com.qintess.eventos.api.service.EspetaculoService;
 
@@ -87,5 +91,23 @@ public class EspetaculoRest {
 		return ResponseEntity.status(HttpStatus.OK).build();
 		
 	}
+	
+	@Transactional
+	@Modifying 
+	@RequestMapping(method=RequestMethod.POST, value="/send/{id}")
+	public ResponseEntity<String> receiveData(@PathVariable(name = "id") Long id, MultipartFile imagem ) throws IOException {
+
+		
+		
+		Espetaculo espetaculo = service.findById(id);
+		byte[]  bImagem;
+		bImagem = imagem.getBytes();
+		
+		espetaculo.setImagemCasa(bImagem);
+		
+		service.update(espetaculo);
+		
+        return ResponseEntity.ok("Imagem Atualizada no banco!");
+    }
 
 }

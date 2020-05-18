@@ -17,19 +17,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.qintess.eventos.api.domain.Casa;
-import com.qintess.eventos.api.service.CasaServiceImpl;
+import com.qintess.eventos.api.service.CasaService;
 
 @RestController
 @RequestMapping(value = "casas")
 public class CasaShowRest {
 
 	@Autowired
-	private CasaServiceImpl service;
+	private CasaService service;
 
 	@GetMapping
 	public ResponseEntity<List<Casa>> listAll() {
@@ -101,6 +102,24 @@ public class CasaShowRest {
 		
 	}
 
-	
-	
+	@Transactional
+	@Modifying 
+	@RequestMapping(method=RequestMethod.POST, value="/send/{id}")
+	public ResponseEntity<String> receiveData(@PathVariable(name = "id") Long id, MultipartFile imagem ) throws IOException {
+
+		
+		
+		Casa casa = service.findById(id);
+		byte[]  bImagem;
+		bImagem = imagem.getBytes();
+		
+		casa.setImagemCasa(bImagem);
+		
+		service.update(casa);
+		
+        return ResponseEntity.ok("Imagem Atualizada no banco!");
+    }
 }
+	
+	
+
