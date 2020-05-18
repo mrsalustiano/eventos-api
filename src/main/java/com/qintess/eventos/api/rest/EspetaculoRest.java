@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.qintess.eventos.api.domain.Casa;
 import com.qintess.eventos.api.domain.Espetaculo;
 import com.qintess.eventos.api.service.EspetaculoService;
 
