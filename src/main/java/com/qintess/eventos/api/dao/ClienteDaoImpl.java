@@ -17,7 +17,7 @@ public class ClienteDaoImpl extends AbstractDao<Cliente, Long> implements Client
 	@Override
 	public List<Cliente> findByCpf(String cpf) {
 		
-		return createQuery("select c from Cliete c where c.cpf = ?1 ) ", cpf); 
+		return createQuery("select c from Cliente c where c.cpf = ?1  ", cpf); 
 	}
 
 

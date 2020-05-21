@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Casa extends AbstractEntity<Long> {
 	
 	@NotNull(message = "O Nome é obrigatório")
-	@Column(nullable = false, length = 80)
+	@Column(nullable = false, length = 80 )
 	private String nome;
 	
 	

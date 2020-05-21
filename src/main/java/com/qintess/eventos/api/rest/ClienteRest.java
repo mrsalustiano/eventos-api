@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qintess.eventos.api.domain.Cliente;
+import com.qintess.eventos.api.rest.exception.BeanBadRequestException;
 import com.qintess.eventos.api.rest.exception.BeanNotFoundException;
+import com.qintess.eventos.api.rest.exception.ExceptionError;
 import com.qintess.eventos.api.service.ClienteService;
 
 @RestController
@@ -41,6 +43,19 @@ public class ClienteRest {
 
 	@PostMapping
 	public ResponseEntity<Cliente> save(@RequestBody @Valid Cliente cliente) {
+		
+		List<Cliente> cli = service.findByCpf(cliente.getCpf());
+		int soma = 0;
+		
+		for (Cliente cliente2 : cli) {
+			
+			soma = soma + 1;
+		}
+		
+		if (soma > 0) {
+			throw new BeanBadRequestException("Já existe Cliente com este CPF: " + cliente.getCpf());
+
+		}
 
 		Cliente save = new Cliente(cliente.getCelular(), cliente.getCpf(), cliente.getEmail(), cliente.getNewsletter(),
 				cliente.getNome(), cliente.getSenhaCliente(),cliente.getLogradouro(), cliente.getNumero(), cliente.getComplemento(), cliente.getBairro(), cliente.getCidade(), 

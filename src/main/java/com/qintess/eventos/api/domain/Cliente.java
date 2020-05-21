@@ -3,6 +3,7 @@ package com.qintess.eventos.api.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -30,12 +31,12 @@ public class Cliente extends AbstractEntity<Long> {
 	@Column(name = "celular", nullable = false, length = 20)
 	private String celular;
 
-	@NotBlank(message = "O CPF é obrigatório")
-	@Column(name = "cpf", nullable = false, length = 20)
+	@NotBlank(message = "O CPF é obrigatório e unico")
+	@Column(name = "cpf", nullable = false, length = 20, unique = true)
 	private String cpf;
 
 	@NotBlank(message = "O Email é obrigatório")
-	@Column(name = "email", nullable = false, length = 80)
+	@Column(name = "email", nullable = false, length = 80, unique = true)
 	private String email;
 
 
