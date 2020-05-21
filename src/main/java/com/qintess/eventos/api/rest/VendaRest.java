@@ -1,5 +1,6 @@
 package com.qintess.eventos.api.rest;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -39,13 +40,12 @@ public class VendaRest {
 	public ResponseEntity<String> save(@RequestBody @Valid  Venda venda){
 		
 			Cliente cli = cliService.findById(venda.getCliente().getId()) ;
-			System.out.println(venda.toString());
-			
+	
 			Espetaculo esp = espService.findById(venda.getEspetaculo().getId());
 		
 			int qtd = 0;
-			Double valores;
-			Double total;
+			BigDecimal valores;
+			BigDecimal total;
 			int qtdJaVendida = 0;
 		
 			
@@ -61,7 +61,7 @@ public class VendaRest {
 			
 			qtd = venda.getQuantidade();
 			valores = esp.getValor();
-			total =  (valores * qtd); //.multiply(new BigDecimal(qtd));
+			total =  valores.multiply(new BigDecimal(qtd));
 			qtd = qtdJaVendida + qtd;
 			
 			if (qtd > 4) {

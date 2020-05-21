@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Casa1\",\n    \"logradouro\": \"Rua Rui Barbosa\",\n    \"numero\": \"190\",\n    \"complemento\": \"Ap 92\",\n    \"bairro\": \"Forte\",\n    \"cep\": \"11700170\",\n    \"cidade\": \"Praia Grande\",\n    \"uf\": \"SP\"\n}",
+							"raw": "{\n    \"nome\": \"Casa1\",\n    \"logradouro\": \"Rua A\",\n    \"numero\": 111,\n    \"complemento\": \"AAA\",\n    \"bairro\": \"Forte\",\n    \"cep\": \"11700170\",\n    \"cidade\": \"Praia Grande\",\n    \"uf\": \"SP\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -31,13 +31,6 @@
 							"port": "8080",
 							"path": [
 								"casas"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": null,
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -73,7 +66,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Casa222\",\n    \"logradouro\": \"Rua Rui Barbosa\",\n    \"numero\": 190,\n    \"complemento\": \"Ap 92\",\n    \"bairro\": \"Forte\",\n    \"cep\": \"11700170\",\n    \"cidade\": \"Praia Grande\",\n    \"uf\": \"SP\"\n}",
+							"raw": "{\n    \"nome\": \"Casa222\",\n    \"logradouro\": \"Rua Rui Barbosa\",\n    \"numero\": 1290,\n    \"complemento\": \"Ap 92\",\n    \"bairro\": \"Forte\",\n    \"cep\": \"11700170\",\n    \"cidade\": \"Praia Grande\",\n    \"uf\": \"SP\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -110,6 +103,60 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Listar por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api}}/casas/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"casas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salva imagem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imagem\n",
+									"type": "file",
+									"src": "god-of-war-iii-remastered-screen-13-ps4-us-16jun15.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/casas/imagem/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"casas",
+								"imagem",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -141,7 +188,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"faixaEtaria\": \"12 anos\",\n    \"dataEspetaculo\": \"2020-02-12\",\n    \"valor\": \"129.00\",\n    \"capacidade\": \"1200\",\n    \"destaque\": \"0\",\n    \"imagemCasa\": \"\",\n    \"imagemEncoded\": \"\",\n    \"casa\":      {\n        \"id\": 1,\n        \"nome\": \"Casa1\",\n        \"imagemCasa\": null,\n        \"imagemEncoded\": null,\n        \"logradouro\": \"Rua Rui Barbosa\",\n        \"numero\": 190,\n        \"complemento\": \"Ap 92\",\n        \"bairro\": \"Forte\",\n        \"cep\": \"11700170\",\n        \"cidade\": \"Praia Grande\",\n        \"uf\": \"SP\"\n    },\n    \"descricao\": \"Show 1 \",\n    \"nome\": \"teste\"\n}",
+							"raw": "{\n    \"faixaEtaria\": \"12 anos\",\n    \"dataEspetaculo\": \"2020-12-12\",\n    \"valor\": \"199.98\",\n    \"capacidade\": \"500\",\n    \"destaque\": \"0\",\n    \"imagemCasa\": \"\",\n    \"imagemEncoded\": \"\",\n    \"casa\":      {\n        \"id\": 1\n    },\n    \"descricao\": \"Show 1 \",\n    \"nome\": \"teste\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -167,7 +214,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n     \r\n        \"faixaEtaria\": \"12 anos\",\r\n        \"dataEspetaculo\": \"2020-02-12\",\r\n        \"valor\": 399.00,\r\n        \"capacidade\": 1200,\r\n        \"destaque\": 0,\r\n        \"imagemCasa\": \"\",\r\n        \"imagemEncoded\": null,\r\n        \"casa\": {\r\n            \"id\": 1,\r\n            \"nome\": \"Casa1\",\r\n            \"imagemCasa\": null,\r\n            \"imagemEncoded\": null,\r\n            \"logradouro\": \"Rua Rui Barbosa\",\r\n            \"numero\": 190,\r\n            \"complemento\": \"Ap 92\",\r\n            \"bairro\": \"Forte\",\r\n            \"cep\": \"11700170\",\r\n            \"cidade\": \"Praia Grande\",\r\n            \"uf\": \"SP\"\r\n        },\r\n        \"descricao\": \"Show 1 \",\r\n        \"nome\": \"teste\",\r\n        \"vendas\": []\r\n    }",
+							"raw": "{\r\n     \r\n        \"faixaEtaria\": \"12 anos\",\r\n        \"dataEspetaculo\": \"2020-12-12\",\r\n        \"valor\": 399.97,\r\n        \"capacidade\": 1200,\r\n        \"destaque\": 0,\r\n        \"imagemCasa\": \"\",\r\n        \"imagemEncoded\": null,\r\n        \"casa\": {\r\n            \"id\": 1,\r\n            \"nome\": \"Casa1\",\r\n            \"imagemCasa\": null,\r\n            \"imagemEncoded\": null,\r\n            \"logradouro\": \"Rua Rui Barbosa\",\r\n            \"numero\": 190,\r\n            \"complemento\": \"Ap 92\",\r\n            \"bairro\": \"Forte\",\r\n            \"cep\": \"11700170\",\r\n            \"cidade\": \"Praia Grande\",\r\n            \"uf\": \"SP\"\r\n        },\r\n        \"descricao\": \"Show 1 \",\r\n        \"nome\": \"teste\",\r\n        \"vendas\": []\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -208,6 +255,53 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ListEspetaculo por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/espetaculos/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"espetaculos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salva imagem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imagem\n",
+									"type": "file",
+									"src": "god-of-war-iii-remastered-screen-13-ps4-us-16jun15.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/espetaculos/imagem/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"espetaculos",
+								"imagem",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -239,7 +333,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"celular\": \"11 9999-9999\",\n    \"cpf\": \"111.111.111-11\",\n    \"email\": \"email@email.com\",\n    \"newsletter\": \"false\",\n    \"nome\": \"marcelo\",\n    \"senhaCliente\": \"asd123\"\n}",
+							"raw": "{\n    \"celular\": \"11 9999-9999\",\n    \"cpf\": \"111.111.111-11\",\n    \"email\": \"email@email.com\",\n    \"newsletter\": \"false\",\n    \"nome\": \"CLIENTE1\",\n    \"senhaCliente\": \"asd123\",\n    \"logradouro\": \"Rua A\",\n\t\"numero\": 1444,\n\t\"complemento\": \"AAA2\",\n\t\"bairro\": \"Canto do Forte\",\n\t\"cidade\": \"Praia Grande\",\n\t\"uf\": \"SP\",\n\t\"cep\": \"11700-999\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -265,7 +359,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\r\n\r\n        \"celular\": \"11 9999-9999\",\r\n        \"cpf\": \"111.111.111-11\",\r\n        \"email\": \"email@email.com\",\r\n        \"newsletter\": false,\r\n        \"nome\": \"marcelo Silva\",\r\n        \"senhaCliente\": \"asd123456\"\r\n    }",
+							"raw": "{\n    \"celular\": \"11 9999-9999\",\n    \"cpf\": \"111.111.111-11\",\n    \"email\": \"email@email.com\",\n    \"newsletter\": \"false\",\n    \"nome\": \"marcelo\",\n    \"senhaCliente\": \"asd123\",\n    \"logradouro\": \"Rua Rui Barbosa\",\n    \"numero\": \"190\",\n    \"complemento\": \"Ap 92\",\n    \"bairro\": \"Canto do Forte\",\n    \"cidade\": \"Praia Grande\",\n    \"uf\": \"SP\",\n    \"cep\": \"11700-170\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -289,6 +383,24 @@
 					"name": "DeleteCliente",
 					"request": {
 						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/clientes/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListCliente por Id",
+					"request": {
+						"method": "GET",
 						"header": [],
 						"url": {
 							"raw": "{{api}}/clientes/1",
@@ -333,7 +445,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"cliente\": \t {\n        \"id\": 1,\n        \"celular\": \"11 9999-9999\",\n        \"cpf\": \"111.111.111-11\",\n        \"email\": \"email@email.com\",\n        \"newsletter\": false,\n        \"nome\": \"marcelo\",\n        \"senhaCliente\": \"54d5cb2d332dbdb4850293caae4559ce88b65163f1ea5d4e4b3ac49d772ded14\"\n    },\n \"espetaculo\":{\n        \"id\": 1,\n        \"faixaEtaria\": \"12 anos\",\n        \"dataEspetaculo\": \"2020-02-12\",\n        \"valor\": 129.00,\n        \"capacidade\": 1200,\n        \"destaque\": 0,\n        \"imagemCasa\": \"\",\n        \"imagemEncoded\": null,\n        \"casa\": {\n            \"id\": 1,\n            \"nome\": \"Casa1\",\n            \"imagemCasa\": null,\n            \"imagemEncoded\": null,\n            \"logradouro\": \"Rua Rui Barbosa\",\n            \"numero\": 190,\n            \"complemento\": \"Ap 92\",\n            \"bairro\": \"Forte\",\n            \"cep\": \"11700170\",\n            \"cidade\": \"Praia Grande\",\n            \"uf\": \"SP\"\n        },\n        \"descricao\": \"Show 1 \",\n        \"nome\": \"teste\",\n        \"vendas\": []\n    },\n\t\n    \"quantidade\": \"2\"\n}\n",
+							"raw": "{\n \"quantidade\":1,\n  \"valor\": 200,\n    \"cliente\": {\n        \"id\":1\n    },\n    \"espetaculo\":   {\n        \"id\": 1\n    }\n   \n}\n",
 							"options": {
 								"raw": {
 									"language": "json"

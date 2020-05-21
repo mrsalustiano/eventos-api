@@ -1,5 +1,6 @@
 package com.qintess.eventos.api.domain;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -45,8 +47,8 @@ public class Espetaculo extends AbstractEntity<Long> {
 	private LocalDate dataEspetaculo;
 
 	@NotNull
-	//@Digits(integer=4,fraction=2,message="Apenas 2 casas após o ponto.")
-	private Double valor; // = new BigDecimal(0);
+	@Digits(integer=4,fraction=2,message="Apenas 2 casas após o ponto.")
+	private BigDecimal valor;
 
 	@NotNull(message = "A Capacidade é obrigatória")
 	@Column(nullable = false)

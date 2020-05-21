@@ -1,5 +1,7 @@
 package com.qintess.eventos.api.domain;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,7 +41,7 @@ public class Venda extends AbstractEntity<Long>{
 	
 	
 	@Column(name = "Valor" , nullable = false)
-	private Double valor;
+	private BigDecimal valor;
 
 	
 }
