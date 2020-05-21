@@ -92,6 +92,7 @@ public class CasaShowRest {
 				service.update(casaU);
 				return ResponseEntity.ok(casaU);
 			} else {
+				
 				throw new BeanNotFoundException("Nao existe essa Casa de Show com id: " + id);
 			}
 
@@ -109,7 +110,7 @@ public class CasaShowRest {
 				service.delete(id);
 				return ResponseEntity.status(HttpStatus.OK).build();
 			} else {
-				throw new BeanNotFoundException("Nao existe essa Casa de Show com id: " + id);
+				throw new  BeanNotFoundException("Nao existe essa Casa de Show com id: " + id);
 
 			}
 		} catch (NoSuchElementException e) {
