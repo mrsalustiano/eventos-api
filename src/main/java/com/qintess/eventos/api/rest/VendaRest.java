@@ -3,6 +3,8 @@ package com.qintess.eventos.api.rest;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,9 +35,10 @@ public class VendaRest {
 	private ClienteService cliService;
 	
 	@PostMapping
-	public ResponseEntity<String> save(@RequestBody Venda venda){
+	public ResponseEntity<String> save(@RequestBody  @Valid Venda venda){
 		
-			Cliente cli = cliService.findById(venda.getCliente().getId());
+			Cliente cli = cliService.findById(venda.getCliente().getId()) ;
+			
 			Espetaculo esp = espService.findById(venda.getEspetaculo().getId());
 		
 			int qtd = 0;

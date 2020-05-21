@@ -6,6 +6,9 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +24,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Casa extends AbstractEntity<Long> {
 	
-	@NotBlank
+	@NotNull(message = "O Nome é obrigatório")
+	@Column(nullable = false, length = 80)
 	private String nome;
 	
 	
@@ -32,33 +36,36 @@ public class Casa extends AbstractEntity<Long> {
 	@Transient //esse campo não será persistido no hibernate
 	private String imagemEncoded;
 	
-	@NotBlank
 	// parte Endereco	
-	@Column(nullable = false, length = 80)
+	@NotBlank(message = "O Logradouro é obrigatório")
+	@Column(name = "logradouro", nullable = false, length = 80)
 	private String logradouro;
 	
-	@NotBlank
-	@Column(nullable = true)
+	
+	@NotNull(message = "O Numero é obrigatório")
+	@Range(min=1, max = 99999, message= "O valor minimo é 1 e maximo 9999" )
+	@Column(name = "numero", nullable = false)
 	private int numero;
 	
-	@NotBlank
-	@Column(nullable = true, length = 80)
+	@Column(name = "complemento", nullable = true, length = 40)
 	private String complemento;
 	
-	@NotBlank
-	@Column(nullable = true, length = 50)
+	@NotBlank(message = "O Bairro é obrigatório")
+	@Column(name = "bairro", nullable = false, length = 40)
 	private String bairro;
 	
-	@NotBlank
-	@Column(nullable = false, length = 9)
+	
+	
+	@NotBlank(message = "O CEP é obrigatório")
+	@Column(name = "cep", nullable = false, length = 9)
 	private String cep;
 	
-	@NotBlank
-	@Column(nullable = false, length = 80)
+	@NotBlank(message = "A Cidade é obrigatório")
+	@Column(name = "cidade", nullable = false, length = 40)
 	private String cidade;
 	
-	@NotBlank
-	@Column(nullable = false, length = 2 , name = "UF")
+	@NotBlank(message = "A UF é obrigatório")
+	@Column(name = "uf", nullable = false, length = 2)
 	private String UF;
 
 

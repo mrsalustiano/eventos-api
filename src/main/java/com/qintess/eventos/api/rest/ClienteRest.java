@@ -1,6 +1,7 @@
 package com.qintess.eventos.api.rest;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import javax.validation.Valid;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qintess.eventos.api.domain.Cliente;
+import com.qintess.eventos.api.rest.exception.BeanNotFoundException;
 import com.qintess.eventos.api.service.ClienteService;
 
 @RestController
@@ -27,58 +29,85 @@ public class ClienteRest {
 
 	@Autowired
 	ClienteService service;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Cliente>> listAll() {
 
-		List<Cliente> clientes = service.findAll(); 
+		List<Cliente> clientes = service.findAll();
 
 		return ResponseEntity.ok(clientes);
 
 	}
-	
 
-	
 	@PostMapping
-	public ResponseEntity<Cliente> save(@RequestBody Cliente cliente){
-		
-			Cliente save = new Cliente(cliente.getCelular(), cliente.getCpf(), cliente.getEmail(), 
-					cliente.getNewsletter(), cliente.getNome(), cliente.getSenhaCliente());
-			
-			System.out.println(save);
-		
-			service.save(save);
-			return ResponseEntity.status(HttpStatus.CREATED).body(cliente);
-	
+	public ResponseEntity<Cliente> save(@RequestBody @Valid Cliente cliente) {
+
+		Cliente save = new Cliente(cliente.getCelular(), cliente.getCpf(), cliente.getEmail(), cliente.getNewsletter(),
+				cliente.getNome(), cliente.getSenhaCliente(),cliente.getLogradouro(), cliente.getNumero(), cliente.getComplemento(), cliente.getBairro(), cliente.getCidade(), 
+				cliente.getUf(), cliente.getCep() );
+		System.out.println(save);
+
+		service.save(save);
+		return ResponseEntity.status(HttpStatus.CREATED).body(cliente);
+
 	}
-	
+
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Cliente> listaPorId(@PathVariable(name = "id") Long id) {
+		try {
+			Cliente cliente = service.findById(id);
+			if (cliente == null) {
+				throw new BeanNotFoundException("Nao existe esse Cliente com id: " + id);
+			} else {
+				return ResponseEntity.ok(cliente);
+			}
+		} catch (NoSuchElementException e) {
+			throw new BeanNotFoundException("Nao existe esse Cliente com id: " + id);
+
+		}
+
+	}
+
 	@PutMapping(value = "/{id}")
 	@Transactional
 	@Modifying
-	public ResponseEntity<Cliente> update(@PathVariable(name = "id") Long id, @Valid @RequestBody Cliente cliente){
-		
-		Cliente clienteU = cliente; 
-		clienteU.setId(id);
-		
-		service.update(clienteU);
-		
-		return ResponseEntity.ok(clienteU);
+	public ResponseEntity<Cliente> update(@PathVariable(name = "id") Long id, @Valid @RequestBody Cliente cliente) {
+
+		try {
+
+			Cliente clienteU = service.findById(id);
+			if (clienteU != null) {
+				clienteU = cliente;
+				clienteU.setId(id);
+				service.update(clienteU);
+				return ResponseEntity.ok(cliente);
+			} else {
+				throw new BeanNotFoundException("Nao existe esse Cliente com id: " + id);
+			}
+		} catch (NoSuchElementException e) {
+			throw new BeanNotFoundException("Nao existe esse Cliente com id: " + id);
+
+		}
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Cliente> delete(@PathVariable(name = "id") Long id){
-		service.delete(id);
-		return ResponseEntity.status(HttpStatus.OK).build();
-		
+	public ResponseEntity<Cliente> delete(@PathVariable(name = "id") Long id) {
+
+		try {
+
+			Cliente clienteU = service.findById(id);
+			if (clienteU != null) {
+				service.delete(id);
+				return ResponseEntity.status(HttpStatus.OK).build();
+			} else {
+				throw new BeanNotFoundException("Nao existe esse Cliente com id: " + id);
+			}
+		} catch (NoSuchElementException e) {
+			throw new BeanNotFoundException("Nao existe esse Cliente com id: " + id);
+
+		}
+
 	}
-	
-	@GetMapping(value = "/login")
-	public ResponseEntity<List<Cliente>> login(@RequestBody Cliente cliente){
-		
-		
-		 
-		return null;
-		
-	}
+
 
 }

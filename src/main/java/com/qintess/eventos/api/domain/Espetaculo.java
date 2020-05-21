@@ -2,6 +2,7 @@ package com.qintess.eventos.api.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,10 @@ import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -31,16 +36,21 @@ public class Espetaculo extends AbstractEntity<Long> {
 
 
 
+	@NotBlank(message = "A Faixa etária é obrigatória")
 	@Column(nullable = false, length = 80)
 	private String faixaEtaria;
 
+	@NotBlank(message = "A data é obrigatória")
+	@Future(message = "A Data deve ser maior que a data de hoje")
 	@Column(nullable = false, columnDefinition = "DATE")
 	@DateTimeFormat(iso = ISO.DATE, pattern = "")
 	private LocalDate dataEspetaculo;
 
-	@Column(nullable = false, scale = 2)
+	@NotBlank
+	@Digits(integer=4,fraction=2,message="Apenas 2 casas após o ponto.")
 	private BigDecimal valor = new BigDecimal(0);
 
+	@NotNull(message = "A Capacidade é obrigatória")
 	@Column(nullable = false)
 	private int capacidade;
 
@@ -54,7 +64,7 @@ public class Espetaculo extends AbstractEntity<Long> {
 	@Transient //esse campo não será persistido no hibernate
 	private String imagemEncoded;
 	
-
+	@NotNull(message = "A Casa de Show é obrigatória")
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "casa_id", nullable = false)
 	public Casa casa;
@@ -63,6 +73,7 @@ public class Espetaculo extends AbstractEntity<Long> {
 	@Column(nullable = true, length = 10000)
 	private String descricao;
 
+	@NotNull(message = "O Nome é obrigatório")
 	@Column(nullable = false, length = 80)
 	private String nome;
 
