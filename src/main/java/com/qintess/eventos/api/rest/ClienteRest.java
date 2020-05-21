@@ -28,7 +28,7 @@ import com.qintess.eventos.api.service.ClienteService;
 public class ClienteRest {
 
 	@Autowired
-	ClienteService service;
+	private ClienteService service;
 
 	@GetMapping
 	public ResponseEntity<List<Cliente>> listAll() {

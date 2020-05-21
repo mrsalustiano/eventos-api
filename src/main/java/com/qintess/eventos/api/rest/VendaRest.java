@@ -1,6 +1,5 @@
 package com.qintess.eventos.api.rest;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -8,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,16 +35,19 @@ public class VendaRest {
 	private ClienteService cliService;
 	
 	@PostMapping
-	public ResponseEntity<String> save(@RequestBody  @Valid Venda venda){
+	@Transactional
+	public ResponseEntity<String> save(@RequestBody @Valid  Venda venda){
 		
 			Cliente cli = cliService.findById(venda.getCliente().getId()) ;
+			System.out.println(venda.toString());
 			
 			Espetaculo esp = espService.findById(venda.getEspetaculo().getId());
 		
 			int qtd = 0;
-			BigDecimal valores;
-			BigDecimal total;
+			Double valores;
+			Double total;
 			int qtdJaVendida = 0;
+		
 			
 			List<Venda> vendaAntiga = service.findByClienteEspetaculo(cli, esp);
 			
@@ -53,23 +56,24 @@ public class VendaRest {
 			}
 			
 			if (qtdJaVendida > 3 ) {
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Quantidade Excedida");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Quantidade Excedida, somente 4 ingressos por Show para cada Cliente");
 			}
 			
 			qtd = venda.getQuantidade();
-			valores = venda.getEspetaculo().getValor();
-			total = valores.multiply(new BigDecimal(qtd));
-			qtd += qtdJaVendida;
+			valores = esp.getValor();
+			total =  (valores * qtd); //.multiply(new BigDecimal(qtd));
+			qtd = qtdJaVendida + qtd;
 			
 			if (qtd > 4) {
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Limite de ingresso excedido somente 4 por evento");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Limite de ingresso excedido somente 4 por evento por cliente");
 				
 			}
 			
 			venda.setValor(total);
 			
 			int capacidade = esp.getCapacidade();
-			capacidade = (esp.getCapacidade() - qtd);
+			capacidade = (capacidade - venda.getQuantidade());
+		
 			if (capacidade < 0) {
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Quantidade de ingresso maior que disponivel");
 

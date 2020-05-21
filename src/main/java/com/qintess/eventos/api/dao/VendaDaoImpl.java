@@ -28,7 +28,7 @@ public class VendaDaoImpl extends AbstractDao<Venda, Long> implements VendaDao {
 		System.out.println(cliente);
 		System.out.println(espetaculo);
 		
-		return createQuery("select v from Venda v where (v.Cliente = ?1) and ( v.espetaculo = ?2 ) ", cliente, espetaculo);
+		return createQuery("select v from Venda v where (v.Cliente = ?1) and ( v.Espetaculo = ?2 ) ", cliente, espetaculo);
 	}
 
 
